@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>منيو خلطة الدار - البهارات</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: #f7f4ef;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      width: 100vw;
+      background: linear-gradient(135deg, #7a2f2f, #b34b4b);
+      color: white;
+      padding: 20px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      flex-wrap: wrap;
+      border-radius: 0;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .brand {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .actions-bottom {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .brand {
+        justify-content: center;
+      }
+
+      .actions {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    header img {
+      width: 65px;
+      height: 65px;
+      object-fit: contain;
+      background: white;
+      border-radius: 50%;
+      padding: 5px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    /* أزرار التواصل */
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 25px;
+      padding: 12px 18px;
+      font-size: 15px;
+      cursor: pointer;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn img {
+      width: 18px;
+      height: 18px;
+    }
+
+    .btn img {
+      width: 18px;
+      height: 18px;
+    }
+
+    .btn:hover { transform: scale(1.05); opacity: 0.9; }
+
+    .whatsapp { background: #25D366; }
+    .instagram { background: #C13584; }
+
+    /* شريط البحث */
+    .search-box {
+      width: 100%;
+      padding: 0 15px;
+      margin: 25px 0;
+      display: flex;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .search-box input {
+      width: 100%;
+      max-width: 360px;
+      padding: 12px 18px;
+      border-radius: 30px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      outline: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+    }
+
+    .container {
+      padding: 10px 20px 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      font-size: 24px;
+      margin: 40px 0 25px;
+      color: #7a2f2f;
+      border-right: 6px solid #7a2f2f;
+      padding-right: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @media (min-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+    }
+
+    .card {
+      background: transparent;
+      border-radius: 15px;
+      box-shadow: none;
+      overflow: visible;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      padding-top: 10px;
+    }
+
+    .card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: contain;
+      background: transparent;
+      display: block;
+    }
+
+    .card-body {
+      padding: 15px;
+      text-align: center;
+      background: white;
+      border-radius: 0 0 15px 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-top: 8px;
+    }
+
+    .card-body h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .price {
+      color: #b34b4b;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    footer {
+      width: 100vw;
+      background: #7a2f2f;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      margin-top: 40px;
+      border-radius: 0;
+      font-size: 14px;
+    }
+
+    /* نافذة منبثقة */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      animation: pop 0.3s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .close {
+      margin-top: 15px;
+      padding: 8px 20px;
+      background: #7a2f2f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* ===== تحسينات خاصة للموبايل والآيباد ===== */
+
+    /* موبايل */
+    @media (max-width: 600px) {
+      header { justify-content: center; text-align: center; }
+      .brand { width: 100%; justify-content: center; }
+      .actions { width: 100%; justify-content: center; }
+      header h1 { font-size: 20px; }
+      .btn { width: 100%; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .card img { height: 120px; }
+    }
+
+    /* آيباد */
+    @media (min-width: 601px) and (max-width: 1024px) {
+      header h1 { font-size: 22px; }
+      .grid { grid-template-columns: repeat(3, 1fr); }
+      .card img { height: 135px; }
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <img src="Pic/logo.png" alt="الشعار">
+    <h1>منيو بهارات الدار</h1>
+  </div>
+
+  
+</header>
+
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="ابحث عن صنف..." onkeyup="searchItems()">
+</div>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-title">خلطة بهارات الدار الخاصة</div>
+    <div class="grid">
+      <div class="card" data-name="خلطة الدار 250" onclick="show('خلطة الدار 250غ', 'السعر: 3.5 دينار')"><img src="Pic/spice1.png"><div class="card-body"><h3>250 غرام</h3><div class="price">3.5 دينار</div></div></div>
+      <div class="card" data-name="خلطة الدار 500" onclick="show('خلطة الدار 500غ', 'السعر: 6 دينار')"><img src="Pic/spice1.png"><div class="card-body"><h3>500 غرام</h3><div class="price">6 دينار</div></div></div>
+      <div class="card" data-name="خلطة الدار 1 كيلو" onclick="show('خلطة الدار 1كغ', 'السعر: 11 دينار')"><img src="Pic/spice1.png"><div class="card-body"><h3>1 كيلو</h3><div class="price">11 دينار</div></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">بهارات 100غ(حب او مطحون)</div>
+    <div class="grid" id="itemsGrid"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">الأصناف الفاخرة</div>
+    <div class="grid">
+      <div class="card" data-name="فلفل أسود" onclick="show('فلفل أسود حب / مطحون', '1.5 دينار')"><img src="Pic/black-peper.png"><div class="card-body"><h3>فلفل أسود</h3><div class="price">1.5 دينار</div></div></div>
+      <div class="card" data-name="قرنفل" onclick="show('قرنفل حب', '1.5 دينار')"><img src="Pic/clove.png"><div class="card-body"><h3>قرنفل حب</h3><div class="price">1.5 دينار</div></div></div>
+      <div class="card" data-name="هيل" onclick="show('هيل حب', '3 دنانير')"><img src="Pic/cardamom.png"><div class="card-body"><h3>هيل حب</h3><div class="price">3 دنانير</div></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">أصناف أخرى</div>
+    <div class="grid">
+      <div class="card" data-name="كراوية 500" onclick="show('خلطة كراوية 500غ', '2.5 دينار')"><img src="Pic/caraway.png"><div class="card-body"><h3>خلطة كراوية 500غ</h3><div class="price">2.5 دينار</div></div></div>
+      <div class="card" data-name="كراوية 1 كيلو" onclick="show('خلطة كراوية 1كغ', '4 دنانير')"><img src="Pic/caraway.png"><div class="card-body"><h3>خلطة كراوية 1كغ</h3><div class="price">4 دنانير</div></div></div>
+    </div>
+  </div>
+
+  <!-- أزرار الطلب أسفل الصفحة -->
+  <div class="actions-bottom">
+    <button class="btn whatsapp" onclick="openWhatsApp()"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"> للطلب عبر واتساب</button>
+    <button class="btn instagram" onclick="openInstagram()"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"> للطلب عبر إنستغرام</button>
+  </div>
+
+</div>
+
+<footer>
+  بهارات الدار
+</footer>
+
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h2 id="modalTitle"></h2>
+    <p id="modalText"></p>
+    <button class="close" onclick="hide()">إغلاق</button>
+  </div>
+</div>
+
+<script>
+  const items = [
+    ['كزبرة', '1 دينار', "Pic/coriander.png"],
+    ['كمون', '1 دينار', "Pic/cumin.png"],
+    ['كركم', '1 دينار', "Pic/turmeric.png"],
+    ['بابريكا', '1 دينار', 'Pic/paprika.png'],
+    ['شطة مجروشة', '1 دينار', "Pic/chili.png"],
+    ['زنجبيل', '1 دينار', "Pic/ginger.png"],
+    ['قرفة', '1 دينار', "Pic/cinnamon.png"],
+    ['بصل بودرة', '1 دينار', "Pic/onion.png"],
+    ['ثوم بودرة', '1 دينار', "Pic/garlic.png"],
+    ['ورق غار', '1 دينار', "Pic/bayleaf.png"],
+    ['لومي', '1 دينار', "Pic/loomi.png"],
+    ['بهار حلو', '1 دينار', "Pic/kababa.png"],
+    ['ورد مجفف', '1 دينار', "Pic/rose.png"],
+  ];
+
+  const grid = document.getElementById('itemsGrid');
+
+  items.forEach(item => {
+    grid.innerHTML += `
+      <div class="card" data-name="${item[0]}" onclick="show('${item[0]}', 'السعر: ${item[1]}')">
+        <img src="${item[2]}">
+        <div class="card-body">
+          <h3>${item[0]}</h3>
+          <div class="price">${item[1]}</div>
+        </div>
+      </div>
+    `;
+  });
+
+  function show(title, text) {
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalText').innerText = text;
+    document.getElementById('modal').style.display = 'flex';
+  }
+
+  function hide() {
+    document.getElementById('modal').style.display = 'none';
+  }
+
+  function openWhatsApp() {
+  const phone = "962791110403";
+  window.open(`https://wa.me/${phone}`, '_blank');
+}
+
+  function openInstagram() {
+    window.open("https://instagram.com/bharat__aldar", '_blank');
+  }
+
+  function searchItems() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+      const name = card.getAttribute('data-name');
+      if (!name || name.toLowerCase().includes(input)) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
