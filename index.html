@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>منيو خلطة الدار - البهارات</title>
+  <title>بهارات الدار</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <style>
@@ -40,12 +40,13 @@
       }
 
       .actions-bottom {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 40px;
-      flex-wrap: wrap;
-    }
+  display: flex;
+  justify-content: center;
+  gap: 15px;          /* مسافة بينهم */
+  margin: 50px 0 20px; /* مسافة عن البوكسات */
+  flex-wrap: wrap;    /* عشان بالموبايل ينزلوا تحت بعض */
+}
+
     }
 
     @media (max-width: 768px) {
@@ -58,10 +59,12 @@
         justify-content: center;
       }
 
-      .actions {
-        width: 100%;
-        justify-content: center;
-      }
+      .actions-bottom .btn {
+  width: auto;          /* مش 100٪ */
+  min-width: 160px;     /* شكل مرتب */
+  justify-content: center;
+}
+
     }
 
     .brand {
@@ -280,6 +283,31 @@
       .grid { grid-template-columns: repeat(3, 1fr); }
       .card img { height: 135px; }
     }
+  @media (max-width: 600px) {
+  .actions-bottom {
+    flex-direction: column; /* فوق بعض */
+    align-items: center;
+  }
+
+  .actions-bottom .btn {
+    width: 90%;             /* شكل حلو بالموبايل */
+    max-width: 300px;
+  }
+}
+
+    header {
+  width: 100%;
+  background: linear-gradient(135deg, #7a2f2f, #b34b4b);
+  color: white;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;   /* أهم سطر */
+  align-items: center;      /* يوسّط */
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
 
   </style>
 </head>
@@ -315,7 +343,7 @@
   </div>
 
   <div class="section">
-    <div class="section-title">الأصناف الفاخرة</div>
+    <div class="section-title">الأكثر طلبا</div>
     <div class="grid">
       <div class="card" data-name="فلفل أسود" onclick="show('فلفل أسود حب / مطحون', '1.5 دينار')"><img src="Pic/black-peper.png"><div class="card-body"><h3>فلفل أسود</h3><div class="price">1.5 دينار</div></div></div>
       <div class="card" data-name="قرنفل" onclick="show('قرنفل حب', '1.5 دينار')"><img src="Pic/clove.png"><div class="card-body"><h3>قرنفل حب</h3><div class="price">1.5 دينار</div></div></div>
